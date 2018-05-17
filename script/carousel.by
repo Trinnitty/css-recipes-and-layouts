@@ -1,0 +1,29 @@
+let left = document.getElementById('left');
+let right = document.getElementById('right');
+let carouselModel = document.getElementById('carousel-model');
+let list = document.getElementById('carousel-model').getElementsByClassName('slader-model');
+let width = list.length * 220;
+let windWidth = parseInt(getComputedStyle(carouselModel).width);
+ console.log(windWidth);
+left.onclick = function() {
+  let value = parseInt(getComputedStyle(carouselModel).left);
+  console.log(width,value);
+  let curValue = value + 220;
+    if (value== 0){
+      curValue = -width+windWidth;
+    }
+    if (value>-220){
+      curValue = -width+windWidth;
+    }
+    carouselModel.style.left = curValue + 'px';
+};
+right.onclick = function() {
+	console.log(width);
+  let value = parseInt(getComputedStyle(carouselModel).left);
+  console.log(value);
+  let curValue = value - 250;
+  if(Math.abs(value) > width-windWidth){
+  	curValue = 0;
+  }
+  carouselModel.style.left = curValue + 'px';
+};
